@@ -135,10 +135,42 @@ Escribir una función que reciba una lista de números enteros y retorne la mayo
 
 **Código**
 
+```
+# Función que recibe una lista de números enteros y retorna la mayor suma entre dos elementos consecutivos
+
+def sumaMayor(lista): #El argumento de la función corresponde a la lista de números enteros
+    listaSumatorias = [] #Luego, se le añaden todas las sumatorias entre los elementos consecutivos
+    x : int = 0 #Se usa para acceder a los números de la lista, según su posición
+    y : int = 1 #Se usa para acceder al número consecutivo de x en la lista 
+
+    while y<len(lista):
+        listaSumatorias.append(lista[x]+lista[y]) #Se le agrega a la lista la suma entre los números consecutivos
+        x+=1
+        y+=1
+    return max(listaSumatorias) #La función retorna la suma con el valor mayor
+
+if __name__=="__main__":
+    listaEnteros=[]
+    print("Este programa recibe una lista de números enteros y devuelve la mayor suma entre dos elementos consecutivos.") #Se imprime el objetivo del programa
+    cantidadNumeros=int(input("Ingrese la cantidad de números enteros que hay en la lista "))
+    for z in range(cantidadNumeros):
+        entero=int(input("Digite el número entero que quiere ingresar a la lista "))
+        listaEnteros.append(entero)  #El usuario añade los enteros que desea a la lista de números enteros
+    resultado=sumaMayor(listaEnteros) #Se llama la función creada anteriormente
+    print("De la lista de números enteros, la mayor suma entre dos elementos consecutivos es " + str(resultado))
+```
+
 **Explicación**
+
+En el cuarto punto, se crea una función llamada _sumaMayor_. Esta función tiene como argumento una lista, que corresponde a la lista de números enteros. En primer lugar, dentro de la función, se declaran las variables _x_ y _y_, las cuales se inicializan con los valores 0 y 1 respectivamente. Asimismo, se declara la variable _listaSumatorias_, que corresponde a una lista vacía. Las variables _x_ y _y_, se van a usar para acceder a los números consecutivos de la lista de enteros.
+
+En el código, se usa un _ciclo while_, el cual se ejecuta hasta que el valor de la variable _y_ corresponde a la posición del último elemento de la lista. Mientras el ciclo se ejecuta, se añaden a _listaSumatorias_ todas las sumas de los números consecutivos de la lista. Cuando se acaba el ciclo, se utiliza el método _max_ para que la función retorne la mayor suma entre dos enteros consecutivos.
+
+Después, se usa la función _main_, donde se imprime la funcionalidad del programa y se crea la lista vacía_ listaEnteros_. Luego, se le pide al usuario que ingrese la cantidad de números enteros que tiene la lista, para que esa sea la cantidad de veces que el usuario pueda ingresar un entero, que se añade a _listaEnteros_ utilizando _append_. Para finalizar, se llama la función creada anteriormente y se imprime el resultado.
 
 ## Punto cinco
 Escribir una función que reciba una lista de string y retorne unicamente aquellos elementos que tengan los mismos caracteres. 
+
 **Código**
 
 **Explicación**
