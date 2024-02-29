@@ -86,9 +86,49 @@ Posteriormente, se usa la función _main_, donde se imprime la funcionalidad del
 
 ## Punto tres
 Escribir una función que reciba una lista de números y devuelva solo aquellos que son primos.
-**Código**
 
+**Código**
+```
+#Función que recibe una lista de números enteros y devuelve solo aquellos que son primos
+
+def primos(lista): #El argumento de la función corresponde a la lista de números enteros
+    x : int = 2 #Se usa como divisor, para calcular el modulo entre el entero y x
+    y : int = 0 #Se usa como la posición de la lista de enteros y permite acceder a cada uno de los números de la lista
+    listaPrimos = [] #Posteriormente, se le añaden los números enteros que cumplen con las características de los primos
+    
+    while y<len(lista): #El ciclo se ejecuta hasta que se evaluen todos los números de la lista
+        if x<=(lista[y]**0.5):
+            if lista[y]%x==0: #Si el modulo es igual a 0, el número entero sí es primo
+                y+=1 #Se suma una unidad, para evaluar si es primo el siguiente número de la lista
+                x=2 #x vuelve a su valor original
+            else:
+                x+=1 #Se le suma una unidad a x y se repite el ciclo
+        else:
+            listaPrimos.append(lista[y]) #Se añade el número entero y primo a la lista de números primos
+            y+=1 #Se suma una unidad, para evaluar si es primo el siguiente número de la lista
+            x=2 #x vuelve a su valor original
+    return listaPrimos
+
+if __name__=="__main__":
+    listaEnteros = []
+    print("Este programa recibe una lista de números enteros y devuelve solo aquellos que son primos.") #Se imprime el objetivo del programa
+    cantidadNumeros=int(input("Ingrese la cantidad de números enteros que hay en la lista "))
+    for z in range(cantidadNumeros):
+        entero=int(input("Digite el número entero que quiere ingresar a la lista "))
+        if entero>1:
+            listaEnteros.append(entero) #El usuario añade los enteros que desea a la lista de números enteros
+    resultado = primos(listaEnteros) #Se llama la función creada anteriormente
+    print("De la lista de números enteros: " + str(listaEnteros) +", los números que son primos son: " + str(resultado))
+```
 **Explicación**
+
+Para el tercer punto, se crea una función llamada _primos_. Esta función tiene como argumento una lista, que corresponde a la lista de números enteros. En primer lugar, dentro de la función, se declaran las variables _x_ y _y_, las cuales se inicializan con los valores 2 y 0 respectivamente. Asimismo, se declara la variable _listaPrimos_, que corresponde a una lista vacía.  La variable _x_ funciona como el divisor, cuando el modulo entre el número de la lista y x, es igual a 0, el número no es primo. La variable _y_ corresponde a la posición de la lista, esta variable permite acceder a cada uno de los números que se encuentran dentro de la lista.  
+
+En el código, se usa un ciclo _while_, que se ejecutará hasta que se hayan evaluado todos y cada uno de los números enteros que se encuentran en la lista de entrada. En el ciclo se usa una estructura _if-else_, en la cual, si la raíz del número entero de la lista es menor al divisor, se añade ese número entero a la lista de los números primos, usando _append_ y se procede a evaluar si el siguiente número de la lista es primo. En caso contrario, se procede a hallar el modulo entre ese número entero y el divisor, si el resultado es igual a 0, el número no es primo y se procede a evaluar si el siguiente número de la lista es primo. Sin embargo, si el resultado del modulo no es igual a 0, se le suma una unidad al divisor y se repite el ciclo.
+
+_Si quiere saber la razón por la que se afirma que cuando la raíz del número entero de la lista es menor al divisor el número es primo, observe el siguiente video: https://www.youtube.com/watch?v=9iH8mY3iGLk_
+
+Cuando se acaba el ciclo, la función retorna la lista de los primos. A continuación, se usa la función _main_, donde se imprime la funcionalidad del programa y se crea la lista vacía _listaEnteros_. Luego, se le pide al usuario que ingrese la cantidad de números enteros que tiene la lista, para que esa sea la cantidad de veces que el usuario pueda ingresar un entero, que se añade a _listaEnteros_ utilizando _append_. Para finalizar, se llama la función creada anteriormente y se imprime el resultado.
 
 ## Punto cuatro
 Escribir una función que reciba una lista de números enteros y retorne la mayor suma entre dos elementos consecutivos.
