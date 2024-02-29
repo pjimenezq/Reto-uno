@@ -80,7 +80,7 @@ Dentro de la función, se declaran las variables _x_ y _y_, las cuales se inicia
 
 Se usa un ciclo _while_, que empieza comparando la primera letra de la palabra con la última letra de esta misma. En el caso de que estas sean iguales, se suma una unidad a _x_ y se le resta una unidad a _y_, lo que implica que ahora se va a comparar la segunda letra de la palabra con la penúltima letra. Este ciclo se seguirá ejecutando mientras la palabra siga cumpliendo la condición de palíndromo y mientras no se hayan comparado todas las letras de la palabra. 
 
-Cuando las letras no coincidan, el booleao _palindromo_ cambiará a valor _False_ y la función retornará la frase _”La palabra no es un palíndromo”_. Asimismo, si ya se evaluó y confirmó la coincidencia de todas las letras de la palabra, el booleano mantendrá el valor _True_, se acabará el ciclo _while_ y se retornará la frase _”La palabra sí es un palíndromo.”
+Cuando las letras no coincidan, el booleao _palindromo_ cambiará a valor _False_ y la función retornará la frase _”La palabra no es un palíndromo”_. Asimismo, si ya se evaluó y confirmó la coincidencia de todas las letras de la palabra, el booleano mantendrá el valor _True_, se acabará el ciclo _while_ y se retornará la frase _”La palabra sí es un palíndromo.”_
 
 Posteriormente, se usa la función _main_, donde se imprime la funcionalidad del programa y se declara e inicializa con la función _input_ la variable correspondiente a la palabra. Por último, se llama la función creada anteriormente y se imprime el resultado.
 
@@ -172,6 +172,52 @@ Después, se usa la función _main_, donde se imprime la funcionalidad del progr
 Escribir una función que reciba una lista de string y retorne unicamente aquellos elementos que tengan los mismos caracteres. 
 
 **Código**
+```
+# Función que recibe una lista de string y retorna aquellos elementos que tengan los mismos caracteres.
+
+def anagrama(lista):
+    listaDos=[] #Luego, se le añade a esta lista los elementos que tienen los mismo caracteres
+    x=0 #Se utiliza para acceder al primer string de la lista
+    y=0 #Se utiliza para acceder a cada una de las letras del primer string
+    z=0 #Se utiliza para acceder a cada una de las palabras de las lista
+
+    while z<len(lista):
+        bandera=True
+        while y<len(lista[x]):
+            if lista[x][y] in lista[z]:#Cuando la letra con la posición y del primer string se encuentra en la palabra con la posición z, se evalua la siguiente letra
+                y+=1
+            else:
+                bandera=False
+                z+=1#Se suma una unidad para evaluar la siguiente palabra
+                y=0
+        if bandera==True:
+            listaDos.append(lista[z])#Se añade la palabra con los mismo caracteres a la segunda lista
+            y=0
+            z+=1
+
+    return listaDos
+
+if __name__=="__main__":
+    lista=[]
+    print("Este programa recibe una lista de strings y retorna aquellos elementos que tengan los mismos caracteres.") #Se imprime el objetivo del programa
+    cantidadPalabras=int(input("Ingrese la cantidad de cadenas que hay en la lista "))
+    for z in range(cantidadPalabras):
+        cadena=str(input("Digite la cadena que quiere ingresar a la lista "))
+        lista.append(cadena)  #El usuario añade las cadenas que desea a la lista de strings
+    resultado=anagrama(lista) #Se llama la función creada anteriormente
+    print("De la lista de strings, aquellos elementos que tienen los mismos caracteres son " + str(resultado))
+```
 
 **Explicación**
+
+Para el último punto, se crea una función llamada _anagrama_. Esta función tiene como argumento una lista, que corresponde a la lista de strings. En primer lugar, dentro de la función, se declaran las variables _x_ , _y_ y  _z_, las cuales se inicializan con el valor 0. Asimismo, se declara la variable _listaDos_, que corresponde a una lista vacía. La variable _x_ se utiliza para acceder al primer string. La variable _y_ permite acceder a cada una de las letras de la primera palabra. La variable _z_ permite acceder a cada una de las palabras.
+
+En el código, se usa un _ciclo while_, el cual se ejecuta hasta que el valor de la variable _z_ corresponde a la posición del último elemento de la lista.
+
+En el _ciclo while_ hay otro _ciclo while_, que se ejecuta hasta que el valor de _y_ corresponde a la posición de la última letra de la primera palabra de la lista.
+
+Lo que se hace en el código es verificar si cada una de las letras de la primera palabra de la lista se encuentra en cada una de las palabras de la lista. En caso de que todas las letras de la primera palabra estén en la palabra con la posición _z_, esta última se agregará a _listaDos_. Al final, la función retorna la _listaDos_.
+
+Luego, se usa la función _main_, donde se imprime la funcionalidad del programa y se crea la lista vacía_ lista_. Luego, se le pide al usuario que ingrese la cantidad de strings que tiene la lista, para que esa sea la cantidad de veces que el usuario pueda ingresar un string, que se añade a _lista_ utilizando _append_. Para finalizar, se llama la función creada anteriormente y se imprime el resultado.¬
+
 
